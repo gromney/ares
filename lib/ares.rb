@@ -18,4 +18,8 @@ module Ares
     #respons = JSON.parse(open("#{@@url}/code-challenges/#{id}").read)
     get("/code-challenges/#{id}")
   end
+
+  def self.today_training language
+    {:description => ""}
+  end
 end

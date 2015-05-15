@@ -5,7 +5,7 @@ describe Ares do
 
   context 'when valid language' do
     it 'returns the description of todays kata' do
-      expect(Ares.today_training(language)[:description]).eql to ''
+      expect(Ares.today_training(language)[:description]).to eql ''
     end
   end
 end
