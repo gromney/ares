@@ -22,7 +22,9 @@ Gem::Specification.new do |spec|
     spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
   end
 
+  spec.add_runtime_dependency "httparty"
+
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "httparty", "~> 1.9.4"
+  spec.add_development_dependency "rspec"
 end
