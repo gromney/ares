@@ -5,7 +5,7 @@ describe Ares do
     let(:language) {:ruby}
 
     it "should return the description of todays kata" do
-      expect(Ares.train(language)[:description]).to eq ''
+      expect(Ares.train(language)).to include :description
     end
   end
 end
