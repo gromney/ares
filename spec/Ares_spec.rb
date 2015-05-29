@@ -37,4 +37,10 @@ describe Ares do
       end
     end
   end
+
+  describe "#train_kata" do
+    context 'when valid parameters (kata,language)' do
+      it { should return "success"}
+    end
+  end
 end
