@@ -24,4 +24,7 @@ module Ares
       :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "peek" => "true" }
     )
   end
+
+  def self.train_kata kata, language
+  end
 end

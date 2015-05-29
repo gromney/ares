@@ -3,6 +3,9 @@ require 'webmock'
 include WebMock::API
 
 describe Ares do
+  let(:kata) {'anything-to-integer'}
+  let(:language) {:ruby}
+  
   describe "#get_user" do
     before do
       body = "{\"name\":\"Geronimo Romney\"}"
@@ -26,7 +29,6 @@ describe Ares do
     end
     context 'when valid language' do
 
-      let(:language) {:ruby}
 
       it "should return the description of todays kata" do
         expect(Ares.train_next(language)['description']).to eq "kata description"
@@ -41,9 +43,9 @@ describe Ares do
   describe "#train_kata" do
     context 'when valid parameters (kata,language)' do
       it "should return 'success:true'" do
-
+        expect(Ares.train_kata(kata,language)).to include 'success'
       end
-      
+
       it "should return 'exampleFixture'" do
 
       end
