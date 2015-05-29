@@ -17,7 +17,7 @@ describe Ares do
     end
   end
 
-  describe "#train" do
+  describe "#train_next" do
     before do
       body = "{\"name\":\"Geronimo Romney\",\"description\":\"kata description\",\"success\":\"true\"}"
       stub_request(:post, "http://www.codewars.com/api/v1code-challenges/ruby/train").
@@ -29,11 +29,11 @@ describe Ares do
       let(:language) {:ruby}
 
       it "should return the description of todays kata" do
-        expect(Ares.train(language)['description']).to eq "kata description"
+        expect(Ares.train_next(language)['description']).to eq "kata description"
       end
       it "should return 'success:true'" do
-        expect(Ares.train(language)).to include 'success'
-        expect(Ares.train(language)['success']).to eq 'true'
+        expect(Ares.train_next(language)).to include 'success'
+        expect(Ares.train_next(language)['success']).to eq 'true'
       end
     end
   end
