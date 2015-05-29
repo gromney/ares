@@ -11,7 +11,7 @@ module Ares
 
   def self.get_user (user)
     #respons = JSON.parse(open("#{@@url}/users/#{user}").read)
-    get("/users/#{user}").parsed_response
+    get("/users/#{user}")
   end
 
   def self.get_challenge (id)
