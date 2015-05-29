@@ -40,7 +40,13 @@ describe Ares do
 
   describe "#train_kata" do
     context 'when valid parameters (kata,language)' do
-      it { should return "success"}
+      it "should return 'success:true'" do
+
+      end
+      
+      it "should return 'exampleFixture'" do
+
+      end
     end
   end
 end
