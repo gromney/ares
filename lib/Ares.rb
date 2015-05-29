@@ -25,6 +25,9 @@ module Ares
     )
   end
 
-  def self.train_kata kata, language
+  def self.train_kata kata, language #https://www.codewars.com/api/v1/code-challenges/:id_or_slug/:language/train
+    post("code-challenges/#{kata}/#{language}/train",
+      :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "peek" => "true" }
+    )
   end
 end
