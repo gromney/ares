@@ -19,7 +19,9 @@ module Ares
     get("/code-challenges/#{id}")
   end
 
-  def self.train language
-    {:description => ''}
+  def self.train language #https://www.codewars.com/api/v1/code-challenges/:language/train
+    post("code-challenges/#{language}/train",
+      :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "peek" => "true" }
+    )
   end
 end
