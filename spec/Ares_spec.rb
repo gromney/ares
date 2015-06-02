@@ -8,7 +8,8 @@ describe Ares do
   body = "{\"name\":\"Geronimo Romney\",
           \"description\":\"kata description\",
           \"success\":\"true\",
-          \"exampleFixture\":true}"
+          \"exampleFixture\":true,
+          \"dmid\":\"4rsdaDf8d\"}"
 
   describe "#get_user" do
     before do
@@ -55,6 +56,23 @@ describe Ares do
 
       it "should return 'exampleFixture'" do
         expect(Ares.train_kata(kata,language)).to include 'exampleFixture'
+      end
+    end
+  end
+
+  #https://www.codewars.com/api/v1/code-challenges/projects/:project_id/solutions/:solution_id/attempt
+  describe "#attempt" do
+    let(:project_id) {'523f66fba0de5d94410001cb'}
+    let(:solution_id) {'53bc968d35fd2feefd000013'}
+    before do
+      stub_request(:post, "http://www.codewars.com/api/v1code-challenges/projects/523f66fba0de5d94410001cb/solutions/53bc968d35fd2feefd000013/attempt").
+        with(:headers => {'Authorization'=>ENV['CODEWARS_API_KEY'], 'code'=>"function(){//example code\n}"}).
+        to_return(:status => 200, :body => body, :headers => {:content_type => 'application/json'})
+    end
+    context "current solution" do
+
+      it "should return 'dmid:4rsdaDf8d'" do
+        expect(Ares.attempt(project_id,solution_id)['dmid']).to eq '4rsdaDf8d'
       end
     end
   end

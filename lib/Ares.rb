@@ -30,4 +30,11 @@ module Ares
       :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "peek" => "true" }
     )
   end
+
+  #https://www.codewars.com/api/v1/code-challenges/projects/:project_id/solutions/:solution_id/attempt
+  def self.attempt(project_id,solution_id)
+    post("code-challenges/projects/#{project_id}/solutions/#{solution_id}/attempt",
+      :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "code" => "function(){//example code\n}" }
+    )
+  end
 end
