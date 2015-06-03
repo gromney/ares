@@ -65,7 +65,7 @@ describe Ares do
     let(:project_id) {'523f66fba0de5d94410001cb'}
     let(:solution_id) {'53bc968d35fd2feefd000013'}
     before do
-      stub_request(:post, "http://www.codewars.com/api/v1code-challenges/projects/523f66fba0de5d94410001cb/solutions/53bc968d35fd2feefd000013/attempt").
+      stub_request(:post, "http://www.codewars.com/api/v1code-challenges/projects/#{project_id}/solutions/#{solution_id}/attempt").
         with(:headers => {'Authorization'=>ENV['CODEWARS_API_KEY'], 'code'=>"function(){//example code\n}"}).
         to_return(:status => 200, :body => body, :headers => {:content_type => 'application/json'})
     end
@@ -74,6 +74,18 @@ describe Ares do
       it "should return 'dmid:4rsdaDf8d'" do
         expect(Ares.attempt(project_id,solution_id)['dmid']).to eq '4rsdaDf8d'
       end
+    end
+  end
+  describe "#finalize" do
+    let(:project_id) {'523f66fba0de5d94410001cb'}
+    let(:solution_id) {'53bc968d35fd2feefd000013'}
+    before do
+      stub_request(:post, "http://www.codewars.com/api/v1code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize").
+      with(:headers => {'Authorization'=>'xacXux-XLC3RJTxGiZ1S'}).
+      to_return(:status => 200, :body => body, :headers => {:content_type => 'application/json'})
+    end
+    it "should return 'success:true' for a previously submitted solution." do
+      expect(Ares.finalize(project_id,solution_id)['success']).to eq 'true'
     end
   end
 end

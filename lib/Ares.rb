@@ -37,4 +37,10 @@ module Ares
       :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] , "code" => "function(){//example code\n}" }
     )
   end
+
+  def self.finalize(project_id,solution_id)
+    post("code-challenges/projects/#{project_id}/solutions/#{solution_id}/finalize",
+      :headers => { "Authorization" => ENV['CODEWARS_API_KEY'] }
+    )
+  end
 end
